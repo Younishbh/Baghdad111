@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baghdad Perfume</title>
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #fff;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(to right, #ffffff, #f8f8f8);
+      border-bottom: 2px solid #eee;
+    }
+    header h1 {
+      font-size: 2em;
+      color: #000;
+      letter-spacing: 2px;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 30px;
+    }
+    .product {
+      border: 1px solid #eee;
+      border-radius: 20px;
+      padding: 15px;
+      text-align: center;
+      background-color: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .product img {
+      width: 100%;
+      max-height: 250px;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+    .product h2 {
+      margin: 10px 0;
+      color: #444;
+    }
+    .product p {
+      margin: 5px 0;
+      color: #666;
+    }
+    .add-btn {
+      background-color: gold;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .cart {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #000;
+      color: #fff;
+      padding: 15px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+    .cart-popup {
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 300px;
+    }
+    .cart-popup.active { display: block; }
+    .whatsapp-btn {
+      display: block;
+      width: 100%;
+      margin-top: 15px;
+      background-color: #25D366;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Baghdad Perfume</h1>
+    <p>عطور فاخرة - سعر العطر 7,000 د.ع | عرض 3 بـ 15,000 د.ع</p>
+  </header>
+
+  <section class="products">
+    <div class="product">
+      <img src="https://via.placeholder.com/300x300.png?text=Baghdad+Perfume+1" alt="عطر بغداد 1">
+      <h2>Baghdad White 1</h2>
+      <p>رائحة فاخرة تدوم طويلاً</p>
+      <button class="add-btn" onclick="addToCart('Baghdad White 1',7000)">أضف للسلة</button>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/300x300.png?text=Baghdad+Perfume+2" alt="عطر بغداد 2">
+      <h2>Baghdad White 2</h2>
+      <p>فخامة تعكس ذوقك</p>
+      <button class="add-btn" onclick="addToCart('Baghdad White 2',7000)">أضف للسلة</button>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/300x300.png?text=Baghdad+Perfume+3" alt="عطر بغداد 3">
+      <h2>Baghdad White 3</h2>
+      <p>عبير شرقي مميز</p>
+      <button class="add-btn" onclick="addToCart('Baghdad White 3',7000)">أضف للسلة</button>
+    </div>
+  </section>
+
+  <div class="cart" onclick="toggleCart()">🛒 سلة الشراء</div>
+
+  <div class="cart-popup" id="cartPopup">
+    <h3>سلة المشتريات</h3>
+    <ul id="cartItems"></ul>
+    <p id="total"></p>
+    <a id="whatsappLink" class="whatsapp-btn" target="_blank">أرسل الطلب عبر واتساب</a>
+  </div>
+
+  <script>
+    let cart = [];
+
+    function addToCart(name, price) {
+      cart.push({name, price});
+      updateCart();
+      alert('تمت إضافة ' + name + ' إلى السلة');
+    }
+
+    function toggleCart() {
+      document.getElementById('cartPopup').classList.toggle('active');
+    }
+
+    function updateCart() {
+      const list = document.getElementById('cartItems');
+      list.innerHTML = '';
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price;
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - ${item.price} د.ع`;
+        list.appendChild(li);
+      });
+
+      if (cart.length >= 3) total = 15000;
+
+      document.getElementById('total').textContent = 'المجموع: ' + total + ' د.ع';
+
+      const message = encodeURIComponent('مرحباً، أود طلب العطور التالية: ' + cart.map(i => i.name).join(', ') + ' | المجموع: ' + total + ' د.ع');
+      document.getElementById('whatsappLink').href = 'https://wa.me/9647833928124?text=' + message;
+    }
+  </script>
+</body>
+</html>
