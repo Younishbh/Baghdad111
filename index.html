@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #c5a059; /* ذهبي فاخر */
-            --bg-color: #0f0f0f; /* أسود ليلي */
+            --primary: #c5a059; /* ذهبي */
+            --bg-color: #0f0f0f; /* أسود */
             --card-bg: #1a1a1a;
             --text-main: #ffffff;
             --text-sec: #bbbbbb;
@@ -132,7 +132,6 @@
             border-bottom: 1px solid #333;
         }
 
-        /* Form Elements */
         .form-group { margin-top: 20px; }
         .form-group label { display: block; margin-bottom: 8px; color: var(--text-sec); }
         .form-group input, .form-group select {
@@ -141,24 +140,16 @@
             color: white; border-radius: 6px;
         }
 
-        /* GPS Button */
         .gps-btn {
-            background: #252525;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            padding: 10px;
-            width: 100%;
-            margin-top: 5px;
-            cursor: pointer;
+            background: #252525; color: var(--primary);
+            border: 1px solid var(--primary); padding: 10px; width: 100%;
+            margin-top: 5px; cursor: pointer;
             display: flex; justify-content: center; align-items: center; gap: 8px;
             border-radius: 6px;
         }
         .gps-btn.success { background: #155724; color: #fff; border-color: #155724; }
 
-        .summary-row {
-            display: flex; justify-content: space-between;
-            margin: 10px 0; color: var(--text-sec);
-        }
+        .summary-row { display: flex; justify-content: space-between; margin: 10px 0; color: var(--text-sec); }
         .total-row {
             display: flex; justify-content: space-between;
             margin-top: 15px; padding-top: 15px; border-top: 1px solid #333;
@@ -166,10 +157,8 @@
         }
 
         .whatsapp-btn {
-            background: #25D366; color: white;
-            width: 100%; padding: 15px;
-            border: none; border-radius: 6px;
-            font-size: 1.1rem; margin-top: 25px;
+            background: #25D366; color: white; width: 100%; padding: 15px;
+            border: none; border-radius: 6px; font-size: 1.1rem; margin-top: 25px;
             cursor: pointer; font-weight: bold;
         }
 
@@ -190,31 +179,27 @@
 
     <div class="hero">
         <h1>NUVIA PERFUMES</h1>
-        <p style="color:var(--text-sec)">الفخامة في زجاجة</p>
+        <p style="color:var(--text-sec)">الفخامة .. في زجاجة</p>
     </div>
 
     <div class="container">
         <div class="filters" id="filters-container">
             <button class="filter-btn active" onclick="filterProducts('all')">الكل</button>
-            <!-- الفلاتر ستظهر هنا -->
         </div>
 
         <div class="products-grid" id="products-container">
-            <p style="text-align:center; grid-column:1/-1; padding:40px;">جاري تحميل مجموعة NUVIA...</p>
+            <p style="text-align:center; grid-column:1/-1; padding:40px;">جاري تحميل المنتجات...</p>
         </div>
     </div>
 
-    <!-- نافذة السلة والدفع -->
+    <!-- نافذة السلة -->
     <div class="modal" id="cartModal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeCart()">&times;</span>
             <h2 style="color:var(--primary); margin-bottom:20px;">إتمام الطلب</h2>
-            
             <div id="cart-items"></div>
             
-            <!-- قسم المعلومات -->
             <div id="checkout-section" style="display:none;">
-                
                 <h4 style="margin-top:25px; border-bottom:1px solid #333; padding-bottom:10px;">معلومات الشحن</h4>
                 
                 <div class="form-group">
@@ -223,17 +208,16 @@
                 </div>
 
                 <div class="form-group">
-                    <label>المحافظة (يحدد سعر التوصيل تلقائياً)</label>
+                    <label>المحافظة</label>
                     <select id="cust-gov" onchange="calculateTotal()">
                         <option value="" data-price="0">اختر المحافظة...</option>
-                        <!-- المحافظات تضاف من الاكسل -->
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label>تحديد الموقع (GPS)</label>
                     <button type="button" class="gps-btn" onclick="getLocation()" id="gps-btn-el">
-                        📍 اضغط لتحديد موقعك تلقائياً
+                        📍 تحديد الموقع تلقائياً
                     </button>
                     <input type="hidden" id="google-map-link">
                     <p id="location-msg" style="font-size:0.8rem; color:#777; margin-top:5px;"></p>
@@ -244,7 +228,6 @@
                     <input type="tel" id="cust-phone" placeholder="07xxxxxxxxx">
                 </div>
 
-                <!-- ملخص الحساب -->
                 <div style="background:#222; padding:15px; border-radius:6px; margin-top:20px;">
                     <div class="summary-row">
                         <span>مجموع المنتجات:</span>
@@ -268,46 +251,25 @@
     </div>
 
     <script>
-        // ==========================================
-        // منطقة الروابط - يرجى وضع روابطك هنا
-        // ==========================================
+        // =========================================================
+        // تم وضع روابطك هنا بعد تحويلها لصيغة CSV
+        // =========================================================
         
-        // 1. رابط صفحة المنتجات (Products CSV)
-        const PRODUCTS_CSV = 'ضع_رابط_csv_المنتجات_هنا';
+        // رابط صفحة "المنتجات"
+        const PRODUCTS_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQdWOMb2scsi_GzqX-kFOhYGx4vTu-V2R4--h7A6hS1UbU_HyT58I5VQ6Ux3RvzynvjCdPLaO4h5NOg/pub?gid=0&single=true&output=csv';
         
-        // 2. رابط صفحة الإعدادات (Settings CSV)
-        const SETTINGS_CSV = 'ضع_رابط_csv_الاعدادات_هنا';
+        // رابط صفحة "الاعدادات"
+        const SETTINGS_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQdWOMb2scsi_GzqX-kFOhYGx4vTu-V2R4--h7A6hS1UbU_HyT58I5VQ6Ux3RvzynvjCdPLaO4h5NOg/pub?gid=491751433&single=true&output=csv';
 
-        // ==========================================
-        
+        // =========================================================
+
         let products = [];
         let cart = [];
-        let deliveryRates = {}; // لتخزين أسعار التوصيل
-        let storePhone = ''; // لتخزين رقم الهاتف
+        let deliveryRates = {}; 
+        let storePhone = '';
 
-        // بيانات وهمية للتجربة فقط (تعمل في حال لم تضع الروابط)
-        const demoProducts = [
-            {id: 1, name: "NUVIA Gold", price: 65000, category: "رجالي", image: "https://images.unsplash.com/photo-1594035910387-fea4779426e9?w=500", description: "عود فاخر مع العنبر"},
-            {id: 2, name: "NUVIA Rose", price: 55000, category: "نسائي", image: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=500", description: "زهور فرنسية نادرة"},
-        ];
-        const demoSettings = [
-            {type: 'general', key: 'whatsapp', value: '9647700000000'},
-            {type: 'delivery', key: 'بغداد', value: '5000'},
-            {type: 'delivery', key: 'البصرة', value: '8000'},
-            {type: 'delivery', key: 'اربيل', value: '10000'},
-            {type: 'delivery', key: 'الموصل', value: '8000'},
-        ];
-
-        // التشغيل عند البداية
         window.onload = async function() {
-            if(PRODUCTS_CSV.includes('ضع_رابط')) {
-                // استخدام البيانات الوهمية
-                products = demoProducts;
-                processSettings(demoSettings);
-                renderProducts(products);
-            } else {
-                await loadAllData();
-            }
+            await loadAllData();
         };
 
         async function loadAllData() {
@@ -315,38 +277,54 @@
                 // جلب المنتجات
                 const prodRes = await fetch(PRODUCTS_CSV);
                 const prodText = await prodRes.text();
-                products = parseCSV(prodText);
+                const rawProds = parseCSV(prodText);
+                products = mapProducts(rawProds); 
                 
                 // جلب الإعدادات
                 const setRes = await fetch(SETTINGS_CSV);
                 const setText = await setRes.text();
-                const settingsData = parseCSV(setText);
+                const rawSettings = parseCSV(setText);
+                processSettings(rawSettings);
                 
-                processSettings(settingsData);
                 renderProducts(products);
+                renderFilters();
                 
             } catch (error) {
                 console.error("Error:", error);
-                alert("حدث خطأ في تحميل البيانات");
+                document.getElementById('products-container').innerHTML = '<p style="text-align:center">جاري تحميل المنتجات... (إذا تأخر، تأكد من وجود بيانات في ملف الاكسل)</p>';
             }
         }
 
-        // معالجة ملف الإعدادات لفصل السعر والرقم
+        // تحويل أسماء الأعمدة العربية
+        function mapProducts(rawItems) {
+            return rawItems.map(item => ({
+                id: item['التسلسل'],
+                name: item['اسم_المنتج'],
+                price: Number(item['السعر']),
+                category: item['القسم'],
+                image: item['رابط_الصورة'],
+                description: item['الوصف']
+            })).filter(item => item.name);
+        }
+
+        // معالجة الإعدادات
         function processSettings(data) {
             const govSelect = document.getElementById('cust-gov');
             
             data.forEach(row => {
-                // استخراج رقم الواتساب
-                if(row.type === 'general' && row.key === 'whatsapp') {
-                    storePhone = row.value;
+                const type = row['النوع'];
+                const key = row['البيان'];
+                const val = row['القيمة'];
+
+                if(type === 'عام' && key === 'واتساب') {
+                    storePhone = val;
                 }
                 
-                // استخراج أسعار التوصيل وملء القائمة
-                if(row.type === 'delivery') {
-                    deliveryRates[row.key] = Number(row.value);
+                if(type === 'توصيل') {
+                    deliveryRates[key] = Number(val);
                     const option = document.createElement('option');
-                    option.value = row.key;
-                    option.textContent = row.key; // الاسم فقط
+                    option.value = key;
+                    option.textContent = key;
                     govSelect.appendChild(option);
                 }
             });
@@ -355,24 +333,49 @@
         function renderProducts(items) {
             const container = document.getElementById('products-container');
             container.innerHTML = '';
+            
+            if(items.length === 0) {
+                container.innerHTML = '<p style="text-align:center; width:100%; color:#888;">لم يتم العثور على منتجات في الملف.</p>';
+                return;
+            }
+
             items.forEach(p => {
+                // وضع صورة افتراضية في حال عدم وجود رابط صورة
+                const imgUrl = (p.image && p.image.length > 5) ? p.image : 'https://via.placeholder.com/300?text=NUVIA';
+                
                 container.innerHTML += `
                     <div class="product-card">
-                        <img src="${p.image}" class="product-img">
+                        <img src="${imgUrl}" class="product-img" alt="${p.name}">
                         <div class="product-info">
                             <span class="category-tag">${p.category}</span>
                             <h3>${p.name}</h3>
-                            <span class="price-tag">${Number(p.price).toLocaleString()} د.ع</span>
-                            <button class="add-btn" onclick="addToCart(${p.id})">أضف للسلة</button>
+                            <span class="price-tag">${p.price.toLocaleString()} د.ع</span>
+                            <button class="add-btn" onclick="addToCart('${p.id}')">أضف للسلة</button>
                         </div>
                     </div>
                 `;
             });
         }
 
-        function filterProducts(cat) {
+        function renderFilters() {
+            const categories = ['all', ...new Set(products.map(p => p.category))];
+            const container = document.getElementById('filters-container');
+            container.innerHTML = '';
+            
+            categories.forEach(cat => {
+                if(!cat) return;
+                const btn = document.createElement('button');
+                btn.className = cat === 'all' ? 'filter-btn active' : 'filter-btn';
+                btn.textContent = cat === 'all' ? 'الكل' : cat;
+                btn.onclick = (e) => filterProducts(cat, e);
+                container.appendChild(btn);
+            });
+        }
+
+        function filterProducts(cat, event) {
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
+            if(event) event.target.classList.add('active');
+            
             const filtered = cat === 'all' ? products : products.filter(p => p.category === cat);
             renderProducts(filtered);
         }
@@ -382,12 +385,10 @@
             const p = products.find(x => x.id == id);
             cart.push(p);
             updateCartCount();
-            alert("تمت الإضافة للسلة");
+            alert("تمت إضافة " + p.name + " للسلة");
         }
 
-        function updateCartCount() {
-            document.getElementById('cart-count').innerText = cart.length;
-        }
+        function updateCartCount() { document.getElementById('cart-count').innerText = cart.length; }
 
         function openCart() {
             document.getElementById('cartModal').style.display = 'flex';
@@ -413,27 +414,26 @@
                     <div class="cart-item">
                         <div>
                             <div style="font-weight:bold">${item.name}</div>
-                            <small style="color:var(--primary)">${Number(item.price).toLocaleString()}</small>
+                            <small style="color:var(--primary)">${item.price.toLocaleString()}</small>
                         </div>
-                        <button onclick="cart.splice(${idx},1); renderCartItems(); updateCartCount(); calculateTotal()" style="color:red; background:none; border:none; cursor:pointer">✕</button>
+                        <button onclick="removeFromCart(${idx})" style="color:red; background:none; border:none; cursor:pointer">✕</button>
                     </div>
                 `;
             });
         }
 
-        // --- حساب المجموع ---
-        function calculateTotal() {
-            // 1. مجموع المنتجات
-            let prodTotal = cart.reduce((sum, item) => sum + Number(item.price), 0);
-            
-            // 2. سعر التوصيل من القائمة
-            const govName = document.getElementById('cust-gov').value;
-            let delPrice = 0;
-            if(govName && deliveryRates[govName]) {
-                delPrice = deliveryRates[govName];
-            }
+        function removeFromCart(idx) {
+            cart.splice(idx,1);
+            renderCartItems();
+            updateCartCount();
+            calculateTotal();
+        }
 
-            // العرض
+        function calculateTotal() {
+            let prodTotal = cart.reduce((sum, item) => sum + item.price, 0);
+            const govName = document.getElementById('cust-gov').value;
+            let delPrice = deliveryRates[govName] || 0;
+
             document.getElementById('sub-total').innerText = prodTotal.toLocaleString() + ' د.ع';
             document.getElementById('delivery-cost').innerText = delPrice.toLocaleString() + ' د.ع';
             document.getElementById('final-total').innerText = (prodTotal + delPrice).toLocaleString() + ' د.ع';
@@ -441,7 +441,6 @@
             return { prodTotal, delPrice, finalTotal: prodTotal + delPrice };
         }
 
-        // --- تحديد الموقع GPS ---
         function getLocation() {
             const btn = document.getElementById('gps-btn-el');
             const msg = document.getElementById('location-msg');
@@ -458,23 +457,20 @@
                 (position) => {
                     const lat = position.coords.latitude;
                     const long = position.coords.longitude;
-                    // إنشاء رابط خرائط جوجل
                     const mapLink = `https://www.google.com/maps?q=${lat},${long}`;
                     
                     linkInput.value = mapLink;
                     btn.classList.add('success');
-                    btn.innerText = "✅ تم تحديد الموقع بنجاح";
-                    msg.innerText = "تم حفظ الإحداثيات لإرسالها مع الطلب";
+                    btn.innerText = "✅ تم تحديد الموقع";
+                    msg.innerText = "تم حفظ الإحداثيات";
                 },
                 (error) => {
                     btn.innerText = "❌ فشل تحديد الموقع";
-                    msg.innerText = "يرجى التأكد من تفعيل الـ GPS والسماح للمتصفح";
-                    console.error(error);
+                    msg.innerText = "يرجى تفعيل GPS من إعدادات الهاتف";
                 }
             );
         }
 
-        // --- إرسال الواتساب ---
         function sendOrder() {
             const name = document.getElementById('cust-name').value;
             const gov = document.getElementById('cust-gov').value;
@@ -491,42 +487,33 @@
             msg += `👤 الاسم: ${name}\n`;
             msg += `📱 الهاتف: ${phone}\n`;
             msg += `📍 المحافظة: ${gov}\n`;
+            if(mapLink) msg += `🗺️ الموقع: ${mapLink}\n`;
+            else msg += `🗺️ الموقع: (لم يتم التحديد)\n`;
             
-            if(mapLink) {
-                msg += `🗺️ *الموقع الدقيق (GPS):*\n${mapLink}\n`;
-            } else {
-                msg += `🗺️ الموقع: (لم يتم التحديد عبر GPS)\n`;
-            }
+            msg += `\n🛒 *الطلبية:* \n`;
+            cart.forEach(item => msg += `- ${item.name}\n`);
 
-            msg += `\n🛒 *المنتجات:* \n`;
-            cart.forEach(item => {
-                msg += `- ${item.name}\n`;
-            });
-
-            msg += `\n💵 قيمة المنتجات: ${totals.prodTotal.toLocaleString()}\n`;
+            msg += `\n💵 المنتجات: ${totals.prodTotal.toLocaleString()}\n`;
             msg += `🚚 التوصيل: ${totals.delPrice.toLocaleString()}\n`;
-            msg += `💰 *المبلغ الكلي: ${totals.finalTotal.toLocaleString()} د.ع*`;
+            msg += `💰 *الإجمالي: ${totals.finalTotal.toLocaleString()} د.ع*`;
 
-            // استخدام الرقم من الاكسل (أو الافتراضي في حالة التجربة)
-            const targetPhone = storePhone || '9647700000000';
+            const targetPhone = storePhone ? storePhone : '9647700000000';
             
             window.open(`https://wa.me/${targetPhone}?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
-        // دالة مساعدة لقراءة CSV
         function parseCSV(text) {
             const lines = text.split('\n');
             const result = [];
-            const headers = lines[0].split(',').map(h => h.trim()); // trim لإزالة المسافات
+            const headers = lines[0].split(',').map(h => h.trim());
             
             for(let i=1; i<lines.length; i++) {
                 if(!lines[i].trim()) continue;
                 const obj = {};
-                const currentline = lines[i].split(',');
+                const currentline = lines[i].split(','); 
                 
                 for(let j=0; j<headers.length; j++){
-                    // تنظيف البيانات من علامات التنصيص الزائدة والمسافات
-                    let val = currentline[j] ? currentline[j].replace(/\r/g,"").trim() : ""; 
+                    let val = currentline[j] ? currentline[j].trim() : "";
                     obj[headers[j]] = val;
                 }
                 result.push(obj);
