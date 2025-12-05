@@ -252,13 +252,10 @@
 
     <script>
         // =========================================================
-        // تم وضع روابطك هنا بعد تحويلها لصيغة CSV
+        // الروابط
         // =========================================================
         
-        // رابط صفحة "المنتجات"
         const PRODUCTS_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQdWOMb2scsi_GzqX-kFOhYGx4vTu-V2R4--h7A6hS1UbU_HyT58I5VQ6Ux3RvzynvjCdPLaO4h5NOg/pub?gid=0&single=true&output=csv';
-        
-        // رابط صفحة "الاعدادات"
         const SETTINGS_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQdWOMb2scsi_GzqX-kFOhYGx4vTu-V2R4--h7A6hS1UbU_HyT58I5VQ6Ux3RvzynvjCdPLaO4h5NOg/pub?gid=491751433&single=true&output=csv';
 
         // =========================================================
@@ -269,18 +266,34 @@
         let storePhone = '';
 
         window.onload = async function() {
+            // 1. استرجاع السلة المحفوظة فوراً عند الفتح
+            loadCartFromStorage();
+            
+            // 2. تحميل البيانات من الانترنت
             await loadAllData();
         };
 
+        // دالة حفظ السلة في ذاكرة المتصفح
+        function saveCartToStorage() {
+            localStorage.setItem('nuvia_cart', JSON.stringify(cart));
+        }
+
+        // دالة استرجاع السلة من ذاكرة المتصفح
+        function loadCartFromStorage() {
+            const savedCart = localStorage.getItem('nuvia_cart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCartCount();
+            }
+        }
+
         async function loadAllData() {
             try {
-                // جلب المنتجات
                 const prodRes = await fetch(PRODUCTS_CSV);
                 const prodText = await prodRes.text();
                 const rawProds = parseCSV(prodText);
                 products = mapProducts(rawProds); 
                 
-                // جلب الإعدادات
                 const setRes = await fetch(SETTINGS_CSV);
                 const setText = await setRes.text();
                 const rawSettings = parseCSV(setText);
@@ -291,11 +304,10 @@
                 
             } catch (error) {
                 console.error("Error:", error);
-                document.getElementById('products-container').innerHTML = '<p style="text-align:center">جاري تحميل المنتجات... (إذا تأخر، تأكد من وجود بيانات في ملف الاكسل)</p>';
+                document.getElementById('products-container').innerHTML = '<p style="text-align:center">جاري تحميل المنتجات...</p>';
             }
         }
 
-        // تحويل أسماء الأعمدة العربية
         function mapProducts(rawItems) {
             return rawItems.map(item => ({
                 id: item['التسلسل'],
@@ -307,7 +319,6 @@
             })).filter(item => item.name);
         }
 
-        // معالجة الإعدادات
         function processSettings(data) {
             const govSelect = document.getElementById('cust-gov');
             
@@ -335,12 +346,11 @@
             container.innerHTML = '';
             
             if(items.length === 0) {
-                container.innerHTML = '<p style="text-align:center; width:100%; color:#888;">لم يتم العثور على منتجات في الملف.</p>';
+                container.innerHTML = '<p style="text-align:center; width:100%; color:#888;">لم يتم العثور على منتجات</p>';
                 return;
             }
 
             items.forEach(p => {
-                // وضع صورة افتراضية في حال عدم وجود رابط صورة
                 const imgUrl = (p.image && p.image.length > 5) ? p.image : 'https://via.placeholder.com/300?text=NUVIA';
                 
                 container.innerHTML += `
@@ -384,6 +394,7 @@
         function addToCart(id) {
             const p = products.find(x => x.id == id);
             cart.push(p);
+            saveCartToStorage(); // حفظ التغييرات
             updateCartCount();
             alert("تمت إضافة " + p.name + " للسلة");
         }
@@ -424,6 +435,7 @@
 
         function removeFromCart(idx) {
             cart.splice(idx,1);
+            saveCartToStorage(); // حفظ التغييرات بعد الحذف
             renderCartItems();
             updateCartCount();
             calculateTotal();
@@ -498,6 +510,9 @@
             msg += `💰 *الإجمالي: ${totals.finalTotal.toLocaleString()} د.ع*`;
 
             const targetPhone = storePhone ? storePhone : '9647700000000';
+            
+            // مسح السلة بعد إرسال الطلب (اختياري) - هنا سأتركها محفوظة تحسباً
+            // localStorage.removeItem('nuvia_cart'); 
             
             window.open(`https://wa.me/${targetPhone}?text=${encodeURIComponent(msg)}`, '_blank');
         }
