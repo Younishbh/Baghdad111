@@ -4,550 +4,383 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YB Watches | الفخامة والدقة</title>
-    <meta name="description" content="متجر YB للساعات الفاخرة - تسوق أفضل الماركات العالمية">
-    
-    <!-- خطوط عربية وانجليزية فاخرة -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    
-    <!-- أيقونات FontAwesome -->
+    <meta name="theme-color" content="#000000">
+
+    <!-- خطوط عربية وأيقونات -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --primary-gold: #D4AF37;
-            --primary-gold-hover: #b4932a;
-            --bg-dark: #0f0f0f;
-            --bg-card: #1a1a1a;
-            --text-light: #f5f5f5;
-            --text-grey: #a0a0a0;
-            --success: #2ecc71;
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --black: #0a0a0a;
+            --dark-gray: #1a1a1a;
+            --text-light: #f0f0f0;
             --whatsapp: #25D366;
-            --glass: rgba(26, 26, 26, 0.95);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
+
         body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: var(--bg-dark);
+            background-color: var(--black);
             color: var(--text-light);
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
-        /* --- Header --- */
+        /* --- الهيدر الفاخر --- */
         header {
-            background-color: rgba(15, 15, 15, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 15px 0;
+            background: rgba(10, 10, 10, 0.95);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            backdrop-filter: blur(10px);
         }
 
-        .navbar {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        .logo {
+        .brand {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: var(--primary-gold);
+            font-size: 2.5rem;
+            color: var(--gold);
+            letter-spacing: 3px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            border: 2px solid var(--primary-gold);
-            padding: 5px 15px;
-            border-radius: 4px;
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            height: 60vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?q=80&w=1920&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            flex-direction: column;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            animation: fadeIn Up 1s ease;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-grey);
-            margin-bottom: 20px;
-        }
-
-        .btn-scroll {
-            background: transparent;
-            border: 1px solid var(--primary-gold);
-            color: var(--primary-gold);
-            padding: 10px 30px;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .btn-scroll:hover { background: var(--primary-gold); color: #000; }
-
-        /* --- Products Grid --- */
-        .container { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 40px;
-            position: relative;
+            border: 2px solid var(--gold);
+            padding: 5px 20px;
             display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
         }
         
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: var(--primary-gold);
-            margin: 10px auto 0;
-        }
+        .slogan { font-size: 0.9rem; color: #888; margin-top: 5px; letter-spacing: 1px; }
 
-        .grid {
+        /* --- الحاوية والشبكة --- */
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+
+        .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
+            padding-bottom: 50px;
         }
 
-        /* Product Card Design */
+        /* --- بطاقة المنتج --- */
         .card {
-            background: var(--bg-card);
+            background: var(--dark-gray);
             border-radius: 12px;
             overflow: hidden;
+            border: 1px solid #333;
             transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            border: 1px solid rgba(255,255,255,0.05);
             display: flex;
             flex-direction: column;
+            position: relative;
         }
 
         .card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-            border-color: var(--primary-gold);
+            border-color: var(--gold);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
         }
 
-        .card-img-wrapper {
-            width: 100%;
+        .img-container {
             height: 300px;
-            position: relative;
+            background: #222;
             overflow: hidden;
-            background-color: #222;
+            position: relative;
         }
 
-        .card-img-wrapper img {
+        .img-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.5s;
         }
 
-        .card:hover img { transform: scale(1.1); }
+        .card:hover .img-container img { transform: scale(1.1); }
 
         .card-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
 
-        .card-title { font-size: 1.2rem; margin-bottom: 10px; font-weight: 700; }
-        .card-desc { color: var(--text-grey); font-size: 0.9rem; flex-grow: 1; margin-bottom: 15px; }
+        .card-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; color: #fff; }
         
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: auto;
+        .card-desc { 
+            font-size: 0.9rem; color: #aaa; margin-bottom: 15px; flex-grow: 1; 
+            display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
         }
 
-        .price { color: var(--primary-gold); font-size: 1.3rem; font-weight: bold; }
+        .card-price {
+            font-size: 1.4rem; color: var(--gold); font-weight: 800; margin-bottom: 15px; display: block;
+        }
 
         .btn-add {
-            background: var(--text-light);
-            color: var(--bg-dark);
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 12px;
+            width: 100%;
             font-weight: bold;
+            cursor: pointer;
+            border-radius: 6px;
             transition: 0.3s;
         }
 
-        .btn-add:hover { background: var(--primary-gold); }
+        .btn-add:hover { background: var(--gold); color: var(--black); }
 
-        /* --- Skeleton Loading (احترافي) --- */
-        .skeleton {
-            background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
-            background-size: 200% 100%;
-            animation: loading 1.5s infinite;
-        }
-        @keyframes loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-
-        /* --- Order Form --- */
+        /* --- نموذج الطلب --- */
         .order-section {
-            background: var(--bg-card);
-            padding: 40px;
-            border-radius: 20px;
-            margin-top: 80px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            position: relative;
-            overflow: hidden;
+            background: var(--dark-gray);
+            padding: 30px;
+            border-radius: 15px;
+            border-top: 4px solid var(--gold);
+            margin-top: 20px;
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
         }
 
-        .order-section::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 5px;
-            background: linear-gradient(90deg, var(--bg-dark), var(--primary-gold), var(--bg-dark));
-        }
+        .section-title { text-align: center; margin-bottom: 30px; color: var(--gold); font-size: 1.8rem; }
 
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .input-group { margin-bottom: 20px; }
-        .full-width { grid-column: 1 / -1; }
-
-        .input-group label { display: block; margin-bottom: 8px; color: var(--text-grey); font-size: 0.9rem; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; color: #ccc; }
         
-        .input-group input, .input-group textarea {
-            width: 100%;
-            padding: 15px;
-            background: #252525;
-            border: 1px solid #333;
-            color: white;
-            border-radius: 8px;
-            font-family: 'Tajawal', sans-serif;
-            transition: 0.3s;
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 15px;
+            background: #0a0a0a; border: 1px solid #333; color: white;
+            border-radius: 8px; font-size: 1rem;
         }
 
-        .input-group input:focus { border-color: var(--primary-gold); background: #2a2a2a; }
+        .form-group input:focus { border-color: var(--gold); outline: none; }
 
-        #selected-product-display {
-            background: rgba(212, 175, 55, 0.1);
-            color: var(--primary-gold);
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            text-align: center;
-            border: 1px dashed var(--primary-gold);
-            display: none; /* مخفي حتى يتم الاختيار */
+        #location-btn {
+            background: #e67e22; color: white; border: none; padding: 15px;
+            width: 100%; border-radius: 8px; cursor: pointer; display: flex;
+            align-items: center; justify-content: center; gap: 10px; font-size: 1rem;
         }
 
-        .btn-main {
-            width: 100%;
-            padding: 18px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: 0.3s;
+        #whatsapp-btn {
+            background: var(--whatsapp); color: white; border: none; padding: 18px;
+            width: 100%; border-radius: 8px; cursor: pointer; font-size: 1.2rem;
+            font-weight: bold; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 10px;
         }
-
-        .btn-location { background: #e67e22; color: white; margin-bottom: 15px; }
-        .btn-whatsapp { background: var(--whatsapp); color: white; }
         
-        .btn-whatsapp:hover { background: #1ebc57; box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); }
+        #whatsapp-btn:hover { background: #1ebe57; }
 
-        /* --- Footer --- */
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            margin-top: 50px;
-            border-top: 1px solid #333;
-            color: var(--text-grey);
-            font-size: 0.9rem;
-        }
+        /* رسائل الحالة */
+        .status-msg { text-align: center; padding: 40px; color: #888; font-size: 1.2rem; }
+        .loading-spinner { border: 4px solid #333; border-top: 4px solid var(--gold); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 20px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* --- Toast Notification --- */
-        #toast {
-            visibility: hidden;
-            min-width: 250px;
-            background-color: var(--primary-gold);
-            color: #000;
-            text-align: center;
-            border-radius: 5px;
-            padding: 16px;
-            position: fixed;
-            z-index: 2000;
-            left: 50%;
-            bottom: 30px;
-            transform: translateX(-50%);
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            opacity: 0;
-            transition: opacity 0.3s, bottom 0.3s;
-        }
+        /* إخفاء الحقول مؤقتا */
+        .hidden { display: none; }
 
-        #toast.show { visibility: visible; opacity: 1; bottom: 50px; }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .form-grid { grid-template-columns: 1fr; }
-            .navbar { flex-direction: column; gap: 10px; }
-        }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="navbar">
-        <div class="logo">YB Watches</div>
-        <!-- يمكنك إضافة روابط هنا إذا أردت -->
-    </div>
+    <div class="brand">YB</div>
+    <div class="slogan">LUXURY TIMEPIECES</div>
 </header>
 
-<section class="hero">
-    <h1>الفخامة في كل ثانية</h1>
-    <p>تشكيلة حصرية من أرقى الساعات العالمية</p>
-    <button class="btn-scroll" onclick="document.getElementById('products-section').scrollIntoView()">تصفح المجموعة</button>
-</section>
-
-<div class="container" id="products-section">
-    <h2 class="section-title">التشكيلة المختارة</h2>
-    
-    <!-- شبكة المنتجات -->
-    <div class="grid" id="products-grid">
-        <!-- سيتم توليد المنتجات هنا -->
-        <!-- Skeletons (للتحميل) -->
-        <div class="card skeleton" style="height: 450px;"></div>
-        <div class="card skeleton" style="height: 450px;"></div>
-        <div class="card skeleton" style="height: 450px;"></div>
+<div class="container">
+    <!-- منطقة المنتجات -->
+    <div id="loader" class="status-msg">
+        <div class="loading-spinner"></div>
+        جاري تحميل الساعات الحصرية...
     </div>
+    
+    <div id="error-box" class="status-msg hidden" style="color: #ff5555;"></div>
+
+    <div class="products-grid" id="products-container"></div>
 </div>
 
-<div class="container">
-    <div class="order-section" id="checkout">
-        <h2 style="text-align:center; margin-bottom:30px; color:white;">إتمام الطلب</h2>
+<!-- منطقة الطلب -->
+<div class="container hidden" id="order-container">
+    <div class="order-section">
+        <h2 class="section-title">إتمام الطلب</h2>
         
-        <div id="selected-product-display">
-            <i class="fas fa-check-circle"></i> تم اختيار: <span id="product-name-span"></span>
-        </div>
-        <input type="hidden" id="selected-product">
-
-        <div class="form-grid">
-            <div class="input-group">
-                <label>الاسم الكامل</label>
-                <input type="text" id="name" placeholder="الاسم الثلاثي">
-            </div>
-            <div class="input-group">
-                <label>رقم الهاتف</label>
-                <input type="tel" id="phone" placeholder="07xxxxxxxxx">
-            </div>
-            
-            <div class="input-group full-width">
-                <label>تحديد الموقع الجغرافي (للتوصيل الدقيق)</label>
-                <button type="button" class="btn-main btn-location" id="geo-btn" onclick="getGeoLocation()">
-                    <i class="fas fa-map-marker-alt"></i> تحديد موقعي تلقائياً (GPS)
-                </button>
-                <div id="geo-status" style="margin-top: 5px; font-size: 0.85rem; text-align: center; color: var(--text-grey);"></div>
-                <input type="hidden" id="geo-link">
-            </div>
-
-            <div class="input-group full-width">
-                <label>ملاحظات إضافية</label>
-                <textarea id="notes" rows="3" placeholder="تفاصيل العنوان، وقت الاستلام، تغليف هدية..."></textarea>
-            </div>
+        <div class="form-group">
+            <label>المنتج المختار:</label>
+            <input type="text" id="selected-product" readonly style="color: var(--gold); font-weight: bold; border-color: var(--gold);">
         </div>
 
-        <button class="btn-main btn-whatsapp" onclick="sendOrder()">
-            <i class="fab fa-whatsapp"></i> تأكيد الطلب عبر واتساب
+        <div class="form-group">
+            <label>الاسم الكامل:</label>
+            <input type="text" id="name" placeholder="أدخل اسمك الكريم">
+        </div>
+
+        <div class="form-group">
+            <label>رقم الهاتف:</label>
+            <input type="tel" id="phone" placeholder="07xxxxxxxxx">
+        </div>
+
+        <div class="form-group">
+            <label>عنوان التوصيل:</label>
+            <button type="button" id="location-btn" onclick="getGPS()">
+                <i class="fas fa-map-marker-alt"></i> تحديد موقعي تلقائياً (GPS)
+            </button>
+            <div id="location-status" style="text-align: center; margin-top: 10px; font-size: 0.9rem; color: #aaa;"></div>
+            <input type="hidden" id="geo-link">
+        </div>
+
+        <div class="form-group">
+            <label>ملاحظات إضافية:</label>
+            <textarea id="notes" rows="3" placeholder="تفاصيل أخرى..."></textarea>
+        </div>
+
+        <button id="whatsapp-btn" onclick="sendOrder()">
+            <i class="fab fa-whatsapp"></i> إرسال الطلب الآن
         </button>
     </div>
 </div>
 
-<footer>
-    <p>&copy; 2024 YB Watches. All rights reserved.</p>
-</footer>
-
-<!-- Toast Notification -->
-<div id="toast">تمت إضافة الساعة للسلة بنجاح! 👇</div>
-
 <script>
-    /* --- الإعدادات --- */
-    const CONFIG = {
-        PHONE: "9647858644168",
-        SHEET_ID: "2PACX-1vTMFYLXX8QRtMctQ5g4A21ftngOtMfKmBpbBpA7T4aDAhwKoRxYJ-JtWjRylqV1dpg0Lyjoj4JEmAJH"
-    };
+    // --- إعدادات النظام ---
+    // تم استخراج المعرف من الرابط الذي أرسلته (ID)
+    const SHEET_ID = "2PACX-1vTMFYLXX8QRtMctQ5g4A21ftngOtMfKmBpbBpA7T4aDAhwKoRxYJ-JtWjRylqV1dpg0Lyjoj4JEmAJH";
+    // تحويل الرابط تلقائياً لطلب CSV بدلاً من HTML
+    const CSV_URL = `https://docs.google.com/spreadsheets/d/e/${SHEET_ID}/pub?output=csv`;
+    
+    const PHONE_NUMBER = "9647858644168"; // رقم الواتساب
 
-    /* --- التشغيل عند التحميل --- */
+    // --- التشغيل عند تحميل الصفحة ---
     window.addEventListener('DOMContentLoaded', () => {
-        fetchProducts();
+        fetchData();
     });
 
-    /* --- جلب البيانات --- */
-    async function fetchProducts() {
-        const url = `https://docs.google.com/spreadsheets/d/e/${CONFIG.SHEET_ID}/pub?output=csv`;
-        const grid = document.getElementById('products-grid');
-
+    // --- دالة جلب البيانات ---
+    async function fetchData() {
         try {
-            const response = await fetch(url);
+            const response = await fetch(CSV_URL);
+            if (!response.ok) throw new Error("فشل الاتصال بجدول البيانات");
+            
             const data = await response.text();
             
-            // تأخير بسيط لإظهار جمالية الـ Skeleton
-            setTimeout(() => {
-                grid.innerHTML = ''; // مسح الـ Skeletons
-                parseAndRender(data);
-            }, 800);
+            // التحقق إذا كان جوجل يعيد صفحة خطأ HTML بدلاً من البيانات
+            if(data.trim().startsWith("<!DOCTYPE html>")) {
+                throw new Error("تنسيق البيانات غير صحيح. تأكد من نشر الشيت بصيغة CSV.");
+            }
+
+            renderProducts(data);
 
         } catch (error) {
-            console.error(error);
-            grid.innerHTML = '<p style="text-align:center; color:red;">عذراً، حدث خطأ في الاتصال بالخادم.</p>';
+            document.getElementById('loader').classList.add('hidden');
+            const errBox = document.getElementById('error-box');
+            errBox.classList.remove('hidden');
+            errBox.innerHTML = `⚠️ عذراً، حدث خطأ:<br>${error.message}<br><br>تأكد من إعدادات النشر في Google Sheet.`;
         }
     }
 
-    /* --- تحليل CSV المتطور --- */
-    function parseAndRender(csvText) {
-        // Regex قوي للتعامل مع الفواصل داخل النصوص "..."
-        const rows = csvText.split('\n').slice(1);
-        const container = document.getElementById('products-grid');
-        const pattern = /(".*?"|[^",\s]+)(?=\s*,|\s*$)/g;
+    // --- دالة عرض المنتجات ---
+    function renderProducts(csvText) {
+        const rows = csvText.split('\n').slice(1); // حذف الصف الأول (العناوين)
+        const container = document.getElementById('products-container');
+        document.getElementById('loader').classList.add('hidden');
+
+        if(rows.length === 0) {
+            container.innerHTML = '<p class="status-msg">لا توجد منتجات حالياً.</p>';
+            return;
+        }
 
         rows.forEach(row => {
-            const cols = row.match(pattern);
-            if (!cols || cols.length < 2) return;
-
-            // تنظيف النصوص
-            const clean = str => str.replace(/^"|"$/g, '').trim();
+            // تقسيم النص مع مراعاة الفواصل داخل علامات التنصيص
+            const cols = row.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
             
-            const name = clean(cols[0]);
-            const price = clean(cols[1]);
-            let img = clean(cols[2]);
-            const desc = clean(cols[3] || '');
+            if (cols && cols.length >= 2) {
+                // تنظيف البيانات
+                const clean = (str) => str ? str.replace(/^"|"$/g, '').trim() : '';
+                
+                // الأعمدة: [0]الاسم، [1]السعر، [2]الصورة، [3]الوصف
+                const name = clean(cols[0]);
+                const price = clean(cols[1]);
+                let img = clean(cols[2]);
+                const desc = clean(cols[3] || "ساعة فاخرة");
 
-            // Fallback Image
-            if (img.length < 10) img = "https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=500&q=60";
+                // صورة افتراضية إذا كان الحقل فارغاً
+                if(img.length < 5) img = "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=600&q=80";
 
-            // إنشاء الكارد
-            const card = document.createElement('div');
-            card.className = 'card';
-            card.innerHTML = `
-                <div class="card-img-wrapper">
-                    <img src="${img}" alt="${name}" loading="lazy">
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">${name}</h3>
-                    <p class="card-desc">${desc.substring(0, 80)}${desc.length > 80 ? '...' : ''}</p>
-                    <div class="card-footer">
-                        <span class="price">${price}</span>
-                        <button class="btn-add" onclick="selectProduct('${name}', '${price}')">
-                            شراء <i class="fas fa-shopping-cart"></i>
-                        </button>
+                const cardHTML = `
+                    <div class="card">
+                        <div class="img-container">
+                            <img src="${img}" alt="${name}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x300?text=YB+Watches'">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">${name}</h3>
+                            <p class="card-desc">${desc}</p>
+                            <span class="card-price">${price}</span>
+                            <button class="btn-add" onclick="selectProduct('${name} - ${price}')">
+                                إضافة للسلة <i class="fas fa-shopping-bag"></i>
+                            </button>
+                        </div>
                     </div>
-                </div>
-            `;
-            container.appendChild(card);
+                `;
+                container.insertAdjacentHTML('beforeend', cardHTML);
+            }
         });
     }
 
-    /* --- وظائف التفاعل --- */
-    function selectProduct(name, price) {
-        // تعبئة البيانات
-        document.getElementById('selected-product').value = `${name} - ${price}`;
+    // --- اختيار المنتج ---
+    function selectProduct(productInfo) {
+        const orderSection = document.getElementById('order-container');
+        document.getElementById('selected-product').value = productInfo;
         
-        // تحديث واجهة المستخدم
-        const display = document.getElementById('selected-product-display');
-        document.getElementById('product-name-span').innerText = name;
-        display.style.display = 'block';
-        display.style.animation = 'fadeIn 0.5s';
-
-        // إشعار Toast
-        showToast();
-
-        // التمرير السلس للأسفل
-        document.getElementById('checkout').scrollIntoView({ behavior: 'smooth' });
+        orderSection.classList.remove('hidden');
+        orderSection.scrollIntoView({ behavior: 'smooth' });
     }
 
-    function showToast() {
-        const toast = document.getElementById("toast");
-        toast.className = "show";
-        setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
-    }
-
-    /* --- تحديد الموقع GPS --- */
-    function getGeoLocation() {
-        const btn = document.getElementById('geo-btn');
-        const status = document.getElementById('geo-status');
+    // --- تحديد الموقع (GPS) ---
+    function getGPS() {
+        const btn = document.getElementById('location-btn');
+        const status = document.getElementById('location-status');
 
         if (!navigator.geolocation) {
-            status.innerHTML = "المتصفح لا يدعم GPS";
+            status.innerHTML = "المتصفح لا يدعم تحديد الموقع.";
             return;
         }
 
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحديد...';
-        
+
         navigator.geolocation.getCurrentPosition(
-            (pos) => {
-                const lat = pos.coords.latitude;
-                const lng = pos.coords.longitude;
-                const link = `https://www.google.com/maps?q=${lat},${lng}`;
+            (position) => {
+                const lat = position.coords.latitude;
+                const long = position.coords.longitude;
+                const link = `https://www.google.com/maps?q=${lat},${long}`;
                 
                 document.getElementById('geo-link').value = link;
-                btn.innerHTML = '<i class="fas fa-check"></i> تم تحديد الموقع';
-                btn.style.background = "#2ecc71"; // لون أخضر
-                status.innerHTML = `<a href="${link}" target="_blank" style="color:#aaa">تأكد من الموقع على الخريطة</a>`;
+                status.innerHTML = `<span style="color:#2ecc71">✅ تم تحديد الموقع بنجاح!</span>`;
+                btn.innerHTML = '<i class="fas fa-check"></i> تم التحديد';
+                btn.style.background = "#2ecc71";
             },
-            (err) => {
-                btn.innerHTML = '<i class="fas fa-times"></i> فشل التحديد';
-                btn.style.background = "#e74c3c"; // لون أحمر
-                status.innerHTML = "يرجى تفعيل خدمة الموقع في هاتفك.";
+            (error) => {
+                status.innerHTML = `<span style="color:#ff5555">❌ فشل تحديد الموقع. يرجى تفعيل الـ GPS.</span>`;
+                btn.innerHTML = 'إعادة المحاولة';
+                btn.style.background = "#e67e22";
             },
             { enableHighAccuracy: true }
         );
     }
 
-    /* --- إرسال الطلب --- */
+    // --- الإرسال للواتساب ---
     function sendOrder() {
         const product = document.getElementById('selected-product').value;
         const name = document.getElementById('name').value;
         const phone = document.getElementById('phone').value;
         const notes = document.getElementById('notes').value;
-        const map = document.getElementById('geo-link').value;
+        const geo = document.getElementById('geo-link').value;
 
-        if(!product) { alert("يرجى اختيار ساعة من القائمة بالأعلى"); return; }
-        if(!name) { document.getElementById('name').focus(); return; }
-        if(!phone) { document.getElementById('phone').focus(); return; }
+        if(!product) { alert("يرجى اختيار ساعة أولاً"); return; }
+        if(!name) { alert("يرجى كتابة الاسم"); return; }
+        if(!phone) { alert("يرجى كتابة رقم الهاتف"); return; }
 
-        let msg = `*طلب جديد | New Order* 🛍️%0a`;
+        let msg = `*طلب جديد من موقع YB* 🛍️%0a`;
         msg += `━━━━━━━━━━━━━━━%0a`;
-        msg += `⌚ *الساعة:* ${product}%0a`;
+        msg += `⌚ *المنتج:* ${product}%0a`;
         msg += `👤 *الاسم:* ${name}%0a`;
-        msg += `📱 *رقم الهاتف:* ${phone}%0a`;
+        msg += `📱 *الهاتف:* ${phone}%0a`;
         
-        if(map) msg += `📍 *الموقع:* ${map}%0a`;
-        else msg += `📍 *الموقع:* لم يحدد (يرجى طلب الموقع يدوياً)%0a`;
+        if(geo) msg += `📍 *الموقع:* ${geo}%0a`;
+        else msg += `📍 *الموقع:* (لم يتم التحديد)%0a`;
 
         if(notes) msg += `📝 *ملاحظات:* ${notes}%0a`;
-        msg += `━━━━━━━━━━━━━━━%0a`;
-        msg += `_Sent via YB Website_`;
+        msg += `━━━━━━━━━━━━━━━`;
 
-        window.open(`https://wa.me/${CONFIG.PHONE}?text=${msg}`, '_blank');
+        window.open(`https://wa.me/${PHONE_NUMBER}?text=${msg}`, '_blank');
     }
 </script>
 
