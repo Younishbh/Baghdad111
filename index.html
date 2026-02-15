@@ -3,538 +3,553 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NUVIA | نوفيا للعطور</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>YB Watches | الفخامة والدقة</title>
+    <meta name="description" content="متجر YB للساعات الفاخرة - تسوق أفضل الماركات العالمية">
+    
+    <!-- خطوط عربية وانجليزية فاخرة -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- أيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
-            --primary: #c5a059; /* ذهبي */
-            --bg-color: #0f0f0f; /* أسود */
-            --card-bg: #1a1a1a;
-            --text-main: #ffffff;
-            --text-sec: #bbbbbb;
+            --primary-gold: #D4AF37;
+            --primary-gold-hover: #b4932a;
+            --bg-dark: #0f0f0f;
+            --bg-card: #1a1a1a;
+            --text-light: #f5f5f5;
+            --text-grey: #a0a0a0;
+            --success: #2ecc71;
+            --whatsapp: #25D366;
+            --glass: rgba(26, 26, 26, 0.95);
         }
-        
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; }
-        
-        body { background-color: var(--bg-color); color: var(--text-main); padding-bottom: 80px;}
 
-        /* Header */
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Header --- */
         header {
-            background: rgba(15, 15, 15, 0.95);
-            padding: 20px;
+            background-color: rgba(15, 15, 15, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid #333;
-            backdrop-filter: blur(10px);
+            padding: 0 20px;
         }
 
-        .logo { font-size: 1.8rem; font-weight: bold; letter-spacing: 2px; color: var(--primary); }
-
-        .cart-btn {
-            background: transparent;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            padding: 8px 20px;
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 2px solid var(--primary-gold);
+            padding: 5px 15px;
             border-radius: 4px;
-            cursor: pointer;
-            transition: 0.3s;
         }
-        .cart-btn:hover { background: var(--primary); color: #000; }
 
-        /* Hero */
+        /* --- Hero Section --- */
         .hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(to bottom, #1a1a1a, #0f0f0f);
-            margin-bottom: 30px;
+            flex-direction: column;
         }
-        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; color: var(--primary); }
 
-        /* Container */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
-        
-        /* Filters */
-        .filters { text-align: center; margin-bottom: 40px; overflow-x: auto; white-space: nowrap; padding-bottom: 10px;}
-        .filter-btn {
-            padding: 8px 25px;
-            margin: 0 5px;
-            border: none;
-            background: #222;
-            color: #888;
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            animation: fadeIn Up 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-grey);
+            margin-bottom: 20px;
+        }
+
+        .btn-scroll {
+            background: transparent;
+            border: 1px solid var(--primary-gold);
+            color: var(--primary-gold);
+            padding: 10px 30px;
+            border-radius: 30px;
             cursor: pointer;
-            border-radius: 20px;
             transition: 0.3s;
         }
-        .filter-btn.active, .filter-btn:hover { background: var(--primary); color: #000; }
 
-        /* Grid */
-        .products-grid {
+        .btn-scroll:hover { background: var(--primary-gold); color: #000; }
+
+        /* --- Products Grid --- */
+        .container { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-gold);
+            margin: 10px auto 0;
+        }
+
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
         }
 
-        .product-card {
-            background: var(--card-bg);
-            border-radius: 8px;
+        /* Product Card Design */
+        .card {
+            background: var(--bg-card);
+            border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.3s;
-            border: 1px solid #333;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
         }
-        .product-card:hover { transform: translateY(-5px); border-color: var(--primary); }
 
-        .product-img { width: 100%; height: 280px; object-fit: cover; }
-        .product-info { padding: 20px; }
-        .product-info h3 { font-size: 1.1rem; margin-bottom: 5px; }
-        .category-tag { font-size: 0.8rem; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
-        .price-tag { display: block; margin: 10px 0; font-size: 1.2rem; font-weight: bold; }
-        
-        .add-btn {
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            border-color: var(--primary-gold);
+        }
+
+        .card-img-wrapper {
             width: 100%;
-            padding: 12px;
-            background: var(--primary);
-            color: #000;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            background-color: #222;
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover img { transform: scale(1.1); }
+
+        .card-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+
+        .card-title { font-size: 1.2rem; margin-bottom: 10px; font-weight: 700; }
+        .card-desc { color: var(--text-grey); font-size: 0.9rem; flex-grow: 1; margin-bottom: 15px; }
+        
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .price { color: var(--primary-gold); font-size: 1.3rem; font-weight: bold; }
+
+        .btn-add {
+            background: var(--text-light);
+            color: var(--bg-dark);
             border: none;
-            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 5px;
             cursor: pointer;
+            font-weight: bold;
             transition: 0.3s;
         }
-        .add-btn:hover { background: #fff; }
 
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
-            justify-content: center; align-items: center;
-            backdrop-filter: blur(5px);
+        .btn-add:hover { background: var(--primary-gold); }
+
+        /* --- Skeleton Loading (احترافي) --- */
+        .skeleton {
+            background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
         }
-        
-        .modal-content {
-            background: #1a1a1a;
-            padding: 30px;
-            width: 95%; max-width: 500px;
-            border-radius: 12px;
-            border: 1px solid #333;
-            max-height: 90vh;
-            overflow-y: auto;
+        @keyframes loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+        /* --- Order Form --- */
+        .order-section {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 80px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
             position: relative;
+            overflow: hidden;
         }
 
-        .cart-item {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid #333;
+        .order-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 5px;
+            background: linear-gradient(90deg, var(--bg-dark), var(--primary-gold), var(--bg-dark));
         }
 
-        .form-group { margin-top: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; color: var(--text-sec); }
-        .form-group input, .form-group select {
-            width: 100%; padding: 12px; 
-            background: #252525; border: 1px solid #333; 
-            color: white; border-radius: 6px;
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
-        .gps-btn {
-            background: #252525; color: var(--primary);
-            border: 1px solid var(--primary); padding: 10px; width: 100%;
-            margin-top: 5px; cursor: pointer;
-            display: flex; justify-content: center; align-items: center; gap: 8px;
-            border-radius: 6px;
-        }
-        .gps-btn.success { background: #155724; color: #fff; border-color: #155724; }
+        .input-group { margin-bottom: 20px; }
+        .full-width { grid-column: 1 / -1; }
 
-        .summary-row { display: flex; justify-content: space-between; margin: 10px 0; color: var(--text-sec); }
-        .total-row {
-            display: flex; justify-content: space-between;
-            margin-top: 15px; padding-top: 15px; border-top: 1px solid #333;
-            font-size: 1.3rem; color: var(--primary); font-weight: bold;
-        }
-
-        .whatsapp-btn {
-            background: #25D366; color: white; width: 100%; padding: 15px;
-            border: none; border-radius: 6px; font-size: 1.1rem; margin-top: 25px;
-            cursor: pointer; font-weight: bold;
+        .input-group label { display: block; margin-bottom: 8px; color: var(--text-grey); font-size: 0.9rem; }
+        
+        .input-group input, .input-group textarea {
+            width: 100%;
+            padding: 15px;
+            background: #252525;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 8px;
+            font-family: 'Tajawal', sans-serif;
+            transition: 0.3s;
         }
 
-        .close-modal {
-            position: absolute; left: 20px; top: 20px;
-            font-size: 1.5rem; cursor: pointer; color: #fff;
+        .input-group input:focus { border-color: var(--primary-gold); background: #2a2a2a; }
+
+        #selected-product-display {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--primary-gold);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px dashed var(--primary-gold);
+            display: none; /* مخفي حتى يتم الاختيار */
+        }
+
+        .btn-main {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-location { background: #e67e22; color: white; margin-bottom: 15px; }
+        .btn-whatsapp { background: var(--whatsapp); color: white; }
+        
+        .btn-whatsapp:hover { background: #1ebc57; box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 50px;
+            border-top: 1px solid #333;
+            color: var(--text-grey);
+            font-size: 0.9rem;
+        }
+
+        /* --- Toast Notification --- */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: var(--primary-gold);
+            color: #000;
+            text-align: center;
+            border-radius: 5px;
+            padding: 16px;
+            position: fixed;
+            z-index: 2000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s, bottom 0.3s;
+        }
+
+        #toast.show { visibility: visible; opacity: 1; bottom: 50px; }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .form-grid { grid-template-columns: 1fr; }
+            .navbar { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">NUVIA</div>
-        <button class="cart-btn" onclick="openCart()">
-            سلة المشتريات <span id="cart-count">0</span>
-        </button>
-    </header>
-
-    <div class="hero">
-        <h1>NUVIA PERFUMES</h1>
-        <p style="color:var(--text-sec)">الفخامة .. في زجاجة</p>
+<header>
+    <div class="navbar">
+        <div class="logo">YB Watches</div>
+        <!-- يمكنك إضافة روابط هنا إذا أردت -->
     </div>
+</header>
 
-    <div class="container">
-        <div class="filters" id="filters-container">
-            <button class="filter-btn active" onclick="filterProducts('all')">الكل</button>
-        </div>
+<section class="hero">
+    <h1>الفخامة في كل ثانية</h1>
+    <p>تشكيلة حصرية من أرقى الساعات العالمية</p>
+    <button class="btn-scroll" onclick="document.getElementById('products-section').scrollIntoView()">تصفح المجموعة</button>
+</section>
 
-        <div class="products-grid" id="products-container">
-            <p style="text-align:center; grid-column:1/-1; padding:40px;">جاري تحميل المنتجات...</p>
-        </div>
+<div class="container" id="products-section">
+    <h2 class="section-title">التشكيلة المختارة</h2>
+    
+    <!-- شبكة المنتجات -->
+    <div class="grid" id="products-grid">
+        <!-- سيتم توليد المنتجات هنا -->
+        <!-- Skeletons (للتحميل) -->
+        <div class="card skeleton" style="height: 450px;"></div>
+        <div class="card skeleton" style="height: 450px;"></div>
+        <div class="card skeleton" style="height: 450px;"></div>
     </div>
+</div>
 
-    <!-- نافذة السلة -->
-    <div class="modal" id="cartModal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeCart()">&times;</span>
-            <h2 style="color:var(--primary); margin-bottom:20px;">إتمام الطلب</h2>
-            <div id="cart-items"></div>
+<div class="container">
+    <div class="order-section" id="checkout">
+        <h2 style="text-align:center; margin-bottom:30px; color:white;">إتمام الطلب</h2>
+        
+        <div id="selected-product-display">
+            <i class="fas fa-check-circle"></i> تم اختيار: <span id="product-name-span"></span>
+        </div>
+        <input type="hidden" id="selected-product">
+
+        <div class="form-grid">
+            <div class="input-group">
+                <label>الاسم الكامل</label>
+                <input type="text" id="name" placeholder="الاسم الثلاثي">
+            </div>
+            <div class="input-group">
+                <label>رقم الهاتف</label>
+                <input type="tel" id="phone" placeholder="07xxxxxxxxx">
+            </div>
             
-            <div id="checkout-section" style="display:none;">
-                <h4 style="margin-top:25px; border-bottom:1px solid #333; padding-bottom:10px;">معلومات الشحن</h4>
-                
-                <div class="form-group">
-                    <label>الاسم الكامل</label>
-                    <input type="text" id="cust-name" placeholder="الاسم هنا">
-                </div>
-
-                <div class="form-group">
-                    <label>المحافظة</label>
-                    <select id="cust-gov" onchange="calculateTotal()">
-                        <option value="" data-price="0">اختر المحافظة...</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>تحديد الموقع (GPS)</label>
-                    <button type="button" class="gps-btn" onclick="getLocation()" id="gps-btn-el">
-                        📍 تحديد الموقع تلقائياً
-                    </button>
-                    <input type="hidden" id="google-map-link">
-                    <p id="location-msg" style="font-size:0.8rem; color:#777; margin-top:5px;"></p>
-                </div>
-
-                <div class="form-group">
-                    <label>رقم الهاتف</label>
-                    <input type="tel" id="cust-phone" placeholder="07xxxxxxxxx">
-                </div>
-
-                <div style="background:#222; padding:15px; border-radius:6px; margin-top:20px;">
-                    <div class="summary-row">
-                        <span>مجموع المنتجات:</span>
-                        <span id="sub-total">0 د.ع</span>
-                    </div>
-                    <div class="summary-row">
-                        <span>سعر التوصيل:</span>
-                        <span id="delivery-cost">0 د.ع</span>
-                    </div>
-                    <div class="total-row">
-                        <span>الإجمالي:</span>
-                        <span id="final-total">0 د.ع</span>
-                    </div>
-                </div>
-
-                <button class="whatsapp-btn" onclick="sendOrder()">
-                    إرسال الطلب عبر واتساب 💬
+            <div class="input-group full-width">
+                <label>تحديد الموقع الجغرافي (للتوصيل الدقيق)</label>
+                <button type="button" class="btn-main btn-location" id="geo-btn" onclick="getGeoLocation()">
+                    <i class="fas fa-map-marker-alt"></i> تحديد موقعي تلقائياً (GPS)
                 </button>
+                <div id="geo-status" style="margin-top: 5px; font-size: 0.85rem; text-align: center; color: var(--text-grey);"></div>
+                <input type="hidden" id="geo-link">
+            </div>
+
+            <div class="input-group full-width">
+                <label>ملاحظات إضافية</label>
+                <textarea id="notes" rows="3" placeholder="تفاصيل العنوان، وقت الاستلام، تغليف هدية..."></textarea>
             </div>
         </div>
+
+        <button class="btn-main btn-whatsapp" onclick="sendOrder()">
+            <i class="fab fa-whatsapp"></i> تأكيد الطلب عبر واتساب
+        </button>
     </div>
+</div>
 
-    <script>
-        // =========================================================
-        // الروابط
-        // =========================================================
+<footer>
+    <p>&copy; 2024 YB Watches. All rights reserved.</p>
+</footer>
+
+<!-- Toast Notification -->
+<div id="toast">تمت إضافة الساعة للسلة بنجاح! 👇</div>
+
+<script>
+    /* --- الإعدادات --- */
+    const CONFIG = {
+        PHONE: "9647858644168",
+        SHEET_ID: "2PACX-1vTMFYLXX8QRtMctQ5g4A21ftngOtMfKmBpbBpA7T4aDAhwKoRxYJ-JtWjRylqV1dpg0Lyjoj4JEmAJH"
+    };
+
+    /* --- التشغيل عند التحميل --- */
+    window.addEventListener('DOMContentLoaded', () => {
+        fetchProducts();
+    });
+
+    /* --- جلب البيانات --- */
+    async function fetchProducts() {
+        const url = `https://docs.google.com/spreadsheets/d/e/${CONFIG.SHEET_ID}/pub?output=csv`;
+        const grid = document.getElementById('products-grid');
+
+        try {
+            const response = await fetch(url);
+            const data = await response.text();
+            
+            // تأخير بسيط لإظهار جمالية الـ Skeleton
+            setTimeout(() => {
+                grid.innerHTML = ''; // مسح الـ Skeletons
+                parseAndRender(data);
+            }, 800);
+
+        } catch (error) {
+            console.error(error);
+            grid.innerHTML = '<p style="text-align:center; color:red;">عذراً، حدث خطأ في الاتصال بالخادم.</p>';
+        }
+    }
+
+    /* --- تحليل CSV المتطور --- */
+    function parseAndRender(csvText) {
+        // Regex قوي للتعامل مع الفواصل داخل النصوص "..."
+        const rows = csvText.split('\n').slice(1);
+        const container = document.getElementById('products-grid');
+        const pattern = /(".*?"|[^",\s]+)(?=\s*,|\s*$)/g;
+
+        rows.forEach(row => {
+            const cols = row.match(pattern);
+            if (!cols || cols.length < 2) return;
+
+            // تنظيف النصوص
+            const clean = str => str.replace(/^"|"$/g, '').trim();
+            
+            const name = clean(cols[0]);
+            const price = clean(cols[1]);
+            let img = clean(cols[2]);
+            const desc = clean(cols[3] || '');
+
+            // Fallback Image
+            if (img.length < 10) img = "https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=500&q=60";
+
+            // إنشاء الكارد
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <div class="card-img-wrapper">
+                    <img src="${img}" alt="${name}" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">${name}</h3>
+                    <p class="card-desc">${desc.substring(0, 80)}${desc.length > 80 ? '...' : ''}</p>
+                    <div class="card-footer">
+                        <span class="price">${price}</span>
+                        <button class="btn-add" onclick="selectProduct('${name}', '${price}')">
+                            شراء <i class="fas fa-shopping-cart"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    /* --- وظائف التفاعل --- */
+    function selectProduct(name, price) {
+        // تعبئة البيانات
+        document.getElementById('selected-product').value = `${name} - ${price}`;
         
-        const PRODUCTS_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQdWOMb2scsi_GzqX-kFOhYGx4vTu-V2R4--h7A6hS1UbU_HyT58I5VQ6Ux3RvzynvjCdPLaO4h5NOg/pub?gid=0&single=true&output=csv';
-        const SETTINGS_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQdWOMb2scsi_GzqX-kFOhYGx4vTu-V2R4--h7A6hS1UbU_HyT58I5VQ6Ux3RvzynvjCdPLaO4h5NOg/pub?gid=491751433&single=true&output=csv';
+        // تحديث واجهة المستخدم
+        const display = document.getElementById('selected-product-display');
+        document.getElementById('product-name-span').innerText = name;
+        display.style.display = 'block';
+        display.style.animation = 'fadeIn 0.5s';
 
-        // =========================================================
+        // إشعار Toast
+        showToast();
 
-        let products = [];
-        let cart = [];
-        let deliveryRates = {}; 
-        let storePhone = '';
+        // التمرير السلس للأسفل
+        document.getElementById('checkout').scrollIntoView({ behavior: 'smooth' });
+    }
 
-        window.onload = async function() {
-            // 1. استرجاع السلة المحفوظة فوراً عند الفتح
-            loadCartFromStorage();
-            
-            // 2. تحميل البيانات من الانترنت
-            await loadAllData();
-        };
+    function showToast() {
+        const toast = document.getElementById("toast");
+        toast.className = "show";
+        setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
+    }
 
-        // دالة حفظ السلة في ذاكرة المتصفح
-        function saveCartToStorage() {
-            localStorage.setItem('nuvia_cart', JSON.stringify(cart));
+    /* --- تحديد الموقع GPS --- */
+    function getGeoLocation() {
+        const btn = document.getElementById('geo-btn');
+        const status = document.getElementById('geo-status');
+
+        if (!navigator.geolocation) {
+            status.innerHTML = "المتصفح لا يدعم GPS";
+            return;
         }
 
-        // دالة استرجاع السلة من ذاكرة المتصفح
-        function loadCartFromStorage() {
-            const savedCart = localStorage.getItem('nuvia_cart');
-            if (savedCart) {
-                cart = JSON.parse(savedCart);
-                updateCartCount();
-            }
-        }
-
-        async function loadAllData() {
-            try {
-                const prodRes = await fetch(PRODUCTS_CSV);
-                const prodText = await prodRes.text();
-                const rawProds = parseCSV(prodText);
-                products = mapProducts(rawProds); 
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحديد...';
+        
+        navigator.geolocation.getCurrentPosition(
+            (pos) => {
+                const lat = pos.coords.latitude;
+                const lng = pos.coords.longitude;
+                const link = `https://www.google.com/maps?q=${lat},${lng}`;
                 
-                const setRes = await fetch(SETTINGS_CSV);
-                const setText = await setRes.text();
-                const rawSettings = parseCSV(setText);
-                processSettings(rawSettings);
-                
-                renderProducts(products);
-                renderFilters();
-                
-            } catch (error) {
-                console.error("Error:", error);
-                document.getElementById('products-container').innerHTML = '<p style="text-align:center">جاري تحميل المنتجات...</p>';
-            }
-        }
+                document.getElementById('geo-link').value = link;
+                btn.innerHTML = '<i class="fas fa-check"></i> تم تحديد الموقع';
+                btn.style.background = "#2ecc71"; // لون أخضر
+                status.innerHTML = `<a href="${link}" target="_blank" style="color:#aaa">تأكد من الموقع على الخريطة</a>`;
+            },
+            (err) => {
+                btn.innerHTML = '<i class="fas fa-times"></i> فشل التحديد';
+                btn.style.background = "#e74c3c"; // لون أحمر
+                status.innerHTML = "يرجى تفعيل خدمة الموقع في هاتفك.";
+            },
+            { enableHighAccuracy: true }
+        );
+    }
 
-        function mapProducts(rawItems) {
-            return rawItems.map(item => ({
-                id: item['التسلسل'],
-                name: item['اسم_المنتج'],
-                price: Number(item['السعر']),
-                category: item['القسم'],
-                image: item['رابط_الصورة'],
-                description: item['الوصف']
-            })).filter(item => item.name);
-        }
+    /* --- إرسال الطلب --- */
+    function sendOrder() {
+        const product = document.getElementById('selected-product').value;
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const notes = document.getElementById('notes').value;
+        const map = document.getElementById('geo-link').value;
 
-        function processSettings(data) {
-            const govSelect = document.getElementById('cust-gov');
-            
-            data.forEach(row => {
-                const type = row['النوع'];
-                const key = row['البيان'];
-                const val = row['القيمة'];
+        if(!product) { alert("يرجى اختيار ساعة من القائمة بالأعلى"); return; }
+        if(!name) { document.getElementById('name').focus(); return; }
+        if(!phone) { document.getElementById('phone').focus(); return; }
 
-                if(type === 'عام' && key === 'واتساب') {
-                    storePhone = val;
-                }
-                
-                if(type === 'توصيل') {
-                    deliveryRates[key] = Number(val);
-                    const option = document.createElement('option');
-                    option.value = key;
-                    option.textContent = key;
-                    govSelect.appendChild(option);
-                }
-            });
-        }
+        let msg = `*طلب جديد | New Order* 🛍️%0a`;
+        msg += `━━━━━━━━━━━━━━━%0a`;
+        msg += `⌚ *الساعة:* ${product}%0a`;
+        msg += `👤 *الاسم:* ${name}%0a`;
+        msg += `📱 *رقم الهاتف:* ${phone}%0a`;
+        
+        if(map) msg += `📍 *الموقع:* ${map}%0a`;
+        else msg += `📍 *الموقع:* لم يحدد (يرجى طلب الموقع يدوياً)%0a`;
 
-        function renderProducts(items) {
-            const container = document.getElementById('products-container');
-            container.innerHTML = '';
-            
-            if(items.length === 0) {
-                container.innerHTML = '<p style="text-align:center; width:100%; color:#888;">لم يتم العثور على منتجات</p>';
-                return;
-            }
+        if(notes) msg += `📝 *ملاحظات:* ${notes}%0a`;
+        msg += `━━━━━━━━━━━━━━━%0a`;
+        msg += `_Sent via YB Website_`;
 
-            items.forEach(p => {
-                const imgUrl = (p.image && p.image.length > 5) ? p.image : 'https://via.placeholder.com/300?text=NUVIA';
-                
-                container.innerHTML += `
-                    <div class="product-card">
-                        <img src="${imgUrl}" class="product-img" alt="${p.name}">
-                        <div class="product-info">
-                            <span class="category-tag">${p.category}</span>
-                            <h3>${p.name}</h3>
-                            <span class="price-tag">${p.price.toLocaleString()} د.ع</span>
-                            <button class="add-btn" onclick="addToCart('${p.id}')">أضف للسلة</button>
-                        </div>
-                    </div>
-                `;
-            });
-        }
+        window.open(`https://wa.me/${CONFIG.PHONE}?text=${msg}`, '_blank');
+    }
+</script>
 
-        function renderFilters() {
-            const categories = ['all', ...new Set(products.map(p => p.category))];
-            const container = document.getElementById('filters-container');
-            container.innerHTML = '';
-            
-            categories.forEach(cat => {
-                if(!cat) return;
-                const btn = document.createElement('button');
-                btn.className = cat === 'all' ? 'filter-btn active' : 'filter-btn';
-                btn.textContent = cat === 'all' ? 'الكل' : cat;
-                btn.onclick = (e) => filterProducts(cat, e);
-                container.appendChild(btn);
-            });
-        }
-
-        function filterProducts(cat, event) {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            if(event) event.target.classList.add('active');
-            
-            const filtered = cat === 'all' ? products : products.filter(p => p.category === cat);
-            renderProducts(filtered);
-        }
-
-        // --- وظائف السلة ---
-        function addToCart(id) {
-            const p = products.find(x => x.id == id);
-            cart.push(p);
-            saveCartToStorage(); // حفظ التغييرات
-            updateCartCount();
-            alert("تمت إضافة " + p.name + " للسلة");
-        }
-
-        function updateCartCount() { document.getElementById('cart-count').innerText = cart.length; }
-
-        function openCart() {
-            document.getElementById('cartModal').style.display = 'flex';
-            renderCartItems();
-            calculateTotal();
-        }
-        function closeCart() { document.getElementById('cartModal').style.display = 'none'; }
-
-        function renderCartItems() {
-            const div = document.getElementById('cart-items');
-            const checkoutSec = document.getElementById('checkout-section');
-            div.innerHTML = '';
-            
-            if(cart.length === 0) {
-                div.innerHTML = '<p style="text-align:center; color:#777">السلة فارغة</p>';
-                checkoutSec.style.display = 'none';
-                return;
-            }
-            
-            checkoutSec.style.display = 'block';
-            cart.forEach((item, idx) => {
-                div.innerHTML += `
-                    <div class="cart-item">
-                        <div>
-                            <div style="font-weight:bold">${item.name}</div>
-                            <small style="color:var(--primary)">${item.price.toLocaleString()}</small>
-                        </div>
-                        <button onclick="removeFromCart(${idx})" style="color:red; background:none; border:none; cursor:pointer">✕</button>
-                    </div>
-                `;
-            });
-        }
-
-        function removeFromCart(idx) {
-            cart.splice(idx,1);
-            saveCartToStorage(); // حفظ التغييرات بعد الحذف
-            renderCartItems();
-            updateCartCount();
-            calculateTotal();
-        }
-
-        function calculateTotal() {
-            let prodTotal = cart.reduce((sum, item) => sum + item.price, 0);
-            const govName = document.getElementById('cust-gov').value;
-            let delPrice = deliveryRates[govName] || 0;
-
-            document.getElementById('sub-total').innerText = prodTotal.toLocaleString() + ' د.ع';
-            document.getElementById('delivery-cost').innerText = delPrice.toLocaleString() + ' د.ع';
-            document.getElementById('final-total').innerText = (prodTotal + delPrice).toLocaleString() + ' د.ع';
-            
-            return { prodTotal, delPrice, finalTotal: prodTotal + delPrice };
-        }
-
-        function getLocation() {
-            const btn = document.getElementById('gps-btn-el');
-            const msg = document.getElementById('location-msg');
-            const linkInput = document.getElementById('google-map-link');
-
-            if (!navigator.geolocation) {
-                msg.innerText = "المتصفح لا يدعم تحديد الموقع";
-                return;
-            }
-
-            btn.innerText = "جاري تحديد الموقع...";
-            
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    const lat = position.coords.latitude;
-                    const long = position.coords.longitude;
-                    const mapLink = `https://www.google.com/maps?q=${lat},${long}`;
-                    
-                    linkInput.value = mapLink;
-                    btn.classList.add('success');
-                    btn.innerText = "✅ تم تحديد الموقع";
-                    msg.innerText = "تم حفظ الإحداثيات";
-                },
-                (error) => {
-                    btn.innerText = "❌ فشل تحديد الموقع";
-                    msg.innerText = "يرجى تفعيل GPS من إعدادات الهاتف";
-                }
-            );
-        }
-
-        function sendOrder() {
-            const name = document.getElementById('cust-name').value;
-            const gov = document.getElementById('cust-gov').value;
-            const phone = document.getElementById('cust-phone').value;
-            const mapLink = document.getElementById('google-map-link').value;
-            const totals = calculateTotal();
-
-            if(!name || !gov || !phone) {
-                alert("يرجى ملء الاسم والمحافظة ورقم الهاتف");
-                return;
-            }
-
-            let msg = `*طلب جديد من متجر NUVIA* ✨\n\n`;
-            msg += `👤 الاسم: ${name}\n`;
-            msg += `📱 الهاتف: ${phone}\n`;
-            msg += `📍 المحافظة: ${gov}\n`;
-            if(mapLink) msg += `🗺️ الموقع: ${mapLink}\n`;
-            else msg += `🗺️ الموقع: (لم يتم التحديد)\n`;
-            
-            msg += `\n🛒 *الطلبية:* \n`;
-            cart.forEach(item => msg += `- ${item.name}\n`);
-
-            msg += `\n💵 المنتجات: ${totals.prodTotal.toLocaleString()}\n`;
-            msg += `🚚 التوصيل: ${totals.delPrice.toLocaleString()}\n`;
-            msg += `💰 *الإجمالي: ${totals.finalTotal.toLocaleString()} د.ع*`;
-
-            const targetPhone = storePhone ? storePhone : '9647700000000';
-            
-            // مسح السلة بعد إرسال الطلب (اختياري) - هنا سأتركها محفوظة تحسباً
-            // localStorage.removeItem('nuvia_cart'); 
-            
-            window.open(`https://wa.me/${targetPhone}?text=${encodeURIComponent(msg)}`, '_blank');
-        }
-
-        function parseCSV(text) {
-            const lines = text.split('\n');
-            const result = [];
-            const headers = lines[0].split(',').map(h => h.trim());
-            
-            for(let i=1; i<lines.length; i++) {
-                if(!lines[i].trim()) continue;
-                const obj = {};
-                const currentline = lines[i].split(','); 
-                
-                for(let j=0; j<headers.length; j++){
-                    let val = currentline[j] ? currentline[j].trim() : "";
-                    obj[headers[j]] = val;
-                }
-                result.push(obj);
-            }
-            return result;
-        }
-    </script>
 </body>
 </html>
